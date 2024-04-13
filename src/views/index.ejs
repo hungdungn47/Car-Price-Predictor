@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car price predictor</title>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <h2 class="title">Car price predictor</h2>
+    <div class="container">
+        <form action="/predict" method="POST" class="enter-feature-form">
+            <div class="input-group">
+                <label>Kilometers driven: </label>
+                <input type="text" name="km_driven" value="<%= data.km_driven %>"/>
+            </div>
+            <div class="input-group">
+                <label>Doors: </label>
+                <input type="text" name="door" value="<%= data.door %>"/>
+            </div>
+            <div class="input-group">
+                <label>Seats: </label>
+                <input type="text" name="seat" value="<%= data.seat %>"/>
+            </div>
+            <div class="input-group">
+                <label>Fuel consumption: </label>
+                <input type="text" name="fuel_consumption" value="<%= data.fuel_consumption %>"/>
+            </div>
+            <div class="input-group">
+                <label>Used: </label>
+                <input type="text" name="used" value="<%= data.used %>"/>
+            </div>
+            <div class="input-group">
+                <label>Imported: </label>
+                <input type="text" name="imported" value="<%= data.imported %>"/>
+            </div>
+                <button> Get result </button>
+        </form>
+        
+        <div class="response-container">
+            <% if(data == null) { %>
+            <% } else { %>
+                <p id="response">Your car might cost <%= data.price %></p>
+            <% } %>
+        </div>
+        
+    </div>
+</body>
+</html>

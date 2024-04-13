@@ -5,6 +5,7 @@ let router = express.Router()
 
 let initWebRoutes = (app) => {
     router.get('/', homeController.getHomePage)
+    router.post('/predict', homeController.predictPage)
     return app.use('/', router)
 }
 
