@@ -8,7 +8,6 @@ def read_in():
 
 def predict(data):
     # Kms_Driven: str, Doors: str, Seats: str, Fuel_Consumption: str, Imported: str, Used: str
-    # print("Data in script.py: ", data)
     model = pickle.load(open('src/ml_model_api/decision_tree_model.pkl', 'rb'))
     makeprediction = model.predict([data])
     output = round(makeprediction[0], 2)
@@ -17,7 +16,6 @@ def predict(data):
 def main():
     #get our data as an array from read_in()
     data = read_in()
-    # print(data)
     print(predict(data))
 
 # Start process

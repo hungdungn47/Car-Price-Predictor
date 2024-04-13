@@ -43,8 +43,8 @@ let getHomePage = (req, res) => {
             fuel_consumption: '',
             used: '',
             imported: '',
-            price: 0
         },
+        price: 0
     })
 }
 
@@ -53,15 +53,7 @@ let predictPage = async (req, res) => {
     let features = Object.values(data)
     let predictedPrice = await predict(features)
     console.log("predicted price in home controlller: ", predictedPrice)
-    return res.render("index.ejs", {data: {
-        km_driven: data.km_driven,
-        door: data.door,
-        seat: data.seat,
-        fuel_consumption: data.fuel_consumption,
-        used: data.used,
-        imported: data.imported,
-        price: predictedPrice
-    }})
+    return res.render("index.ejs", {data: data, price: predictedPrice})
 }
 module.exports = {
     getHomePage: getHomePage,
