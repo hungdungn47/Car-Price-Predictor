@@ -1,10 +1,10 @@
 // The path to your python script
-var myPythonScript = "src/ml_model_api/script.py";
+var myPythonScript = "ml_model_api/script.py";
 // Provide the path of the python executable, if python is available as environment variable then you can use only "python"
 var pythonExecutable = "python";
 
 // Function to convert an Uint8Array to a string
-var uint8arrayToString = function(data){
+var uint8arrayToString = (data) => {
     return String.fromCharCode.apply(null, data);
 };
 
@@ -29,6 +29,7 @@ let predict = async (features) => {
                 resolve(result);
             });
         } catch (e) {
+            console.log("error")
             reject(e);
         }
     });
