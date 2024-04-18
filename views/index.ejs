@@ -14,32 +14,39 @@
                 <input type="text" name="km_driven" value="<%= data.km_driven %>"/>
             </div>
             <div class="input-group">
-                <label>Doors: </label>
+                <label>Number of doors: </label>
                 <input type="text" name="door" value="<%= data.door %>"/>
             </div>
             <div class="input-group">
-                <label>Seats: </label>
+                <label>Number of seats: </label>
                 <input type="text" name="seat" value="<%= data.seat %>"/>
             </div>
             <div class="input-group">
-                <label>Fuel consumption: </label>
+                <label>Fuel consumption (Litres/100kms): </label>
                 <input type="text" name="fuel_consumption" value="<%= data.fuel_consumption %>"/>
             </div>
             <div class="input-group">
-                <label>Used: </label>
-                <input type="text" name="used" value="<%= data.used %>"/>
+                <label>Has the car been used or not?:</label>
+                <select type="text" name="used" value="<%= data.used %>"/>
+                    <option value="1">Used</option>
+                    <option value="0">Never used</option>
+                </select>
             </div>
             <div class="input-group">
-                <label>Imported: </label>
-                <input type="text" name="imported" value="<%= data.imported %>"/>
+                <label>Is the car imported or not?: </label>
+                <select type="text" name="imported" value="<%= data.imported %>"/>
+                    <option value="1">Imported</option>
+                    <option value="0">Not imported</option>
+                </select>
             </div>
                 <button> Get result </button>
         </form>
         
         <div class="response-container">
-            <% if(data == null) { %>
+            <% if(price == 0) { %>
+                <p id="response">Wondering how much your car might cost?.<br/> Just enter some information and we'll figure it out for you!</p>
             <% } else { %>
-                <p id="response">Your car might cost <%= price %></p>
+                <p id="response">Your car probably worth <%= price %> VND</p>
             <% } %>
         </div>
         

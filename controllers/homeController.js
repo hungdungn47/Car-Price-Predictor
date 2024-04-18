@@ -38,12 +38,12 @@ let predict = async (features) => {
 let getHomePage = (req, res) => {
     return res.render("index.ejs", {
         data: {
-            km_driven: '',
-            door: '',
-            seat: '',
-            fuel_consumption: '',
-            used: '',
-            imported: '',
+            km_driven: 0,
+            door: 0,
+            seat: 0,
+            fuel_consumption: 0,
+            used: 0,
+            imported: 0,
         },
         price: 0
     })
@@ -51,6 +51,7 @@ let getHomePage = (req, res) => {
 
 let predictPage = async (req, res) => {
     let data = req.body
+    console.log('data from predictPage: ', data)
     let features = Object.values(data)
     let predictedPrice = await predict(features)
     console.log("predicted price in home controlller: ", predictedPrice)

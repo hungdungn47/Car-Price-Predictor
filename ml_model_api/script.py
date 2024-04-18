@@ -16,7 +16,7 @@ def predict(data):
 def main():
     #get our data as an array from read_in()
     data = read_in()
-    print(predict(data))
+    print("{:,}".format((int)(predict(data))))
 
 # Start process
 if __name__ == '__main__':
