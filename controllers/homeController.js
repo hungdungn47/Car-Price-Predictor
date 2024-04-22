@@ -9,7 +9,13 @@ var uint8arrayToString = (data) => {
 };
 
 const spawn = require('child_process').spawn;
-const carBrands = ['Honda', 'Toyota', 'Lexus', 'Range Rover', 'Mercedes', 'BMW', 'Maserati']
+const carBrands = ['Mercedes','Audi','Bentley','Daewoo','Chevrolet','BMW','Jaguar','LandRover',
+                'Lexus','Maserati','Mercedes Benz','Nissan','Peugeot','Porsche','Volkswagen',
+                'Volvo']
+
+const encodedBrand = {'LandRover': 6, 'Peugeot': 11, 'Mercedes': 8, 'Porsche': 12, 'Audi': 0, 
+                    'Mercedes Benz': 9, 'Chevrolet': 3, 'BMW': 1, 'Lexus': 7, 'Nissan': 10, 
+                    'Jaguar': 5, 'Bentley': 2, 'Daewoo': 4}
 
 let predict = async (features) => {
     return new Promise((resolve, reject) => {
@@ -62,7 +68,7 @@ let predictPage = async (req, res) => {
     console.log('test data: ', data)
     
     let dummyData = {
-        brand: carBrands.indexOf(data.brand),
+        brand: encodedBrand[data.brand],
         km_driven: data.km_driven,
         door: data.door,
         seat: data.seat,
