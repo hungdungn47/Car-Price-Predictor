@@ -8,8 +8,12 @@ Now this web is only available on localhost.
 
 1. Clone this repository
 2. Open a terminal in the repository directory
-3. Type command
+3. Install required packages by this command
+```
+npm install
+```
+4. Run localhost server by this command
 ```
 npm start
 ```
-4. Open your web browser and type URL: localhost:2000
+5. Open your web browser and type URL: localhost:2000
