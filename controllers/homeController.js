@@ -9,7 +9,7 @@ var uint8arrayToString = (data) => {
 };
 
 const spawn = require('child_process').spawn;
-
+const carBrands = ['Honda', 'Toyota', 'Lexus', 'Range Rover', 'Mercedes', 'BMW', 'Maserati']
 
 let predict = async (features) => {
     return new Promise((resolve, reject) => {
@@ -37,7 +37,11 @@ let predict = async (features) => {
 
 let getHomePage = (req, res) => {
     return res.render("index.ejs", {
+        brandsData: carBrands,
         data: {
+            brand: '',
+            driven: '',
+            fuel_type: '',
             km_driven: 0,
             door: 0,
             seat: 0,
@@ -50,12 +54,40 @@ let getHomePage = (req, res) => {
 }
 
 let predictPage = async (req, res) => {
+    // let data = req.body
+    // console.log('data from predictPage: ', data)
+
+
     let data = req.body
-    console.log('data from predictPage: ', data)
-    let features = Object.values(data)
+    console.log('test data: ', data)
+    
+    let dummyData = {
+        brand: carBrands.indexOf(data.brand),
+        km_driven: data.km_driven,
+        door: data.door,
+        seat: data.seat,
+        fuel_consumption: data.fuel_consumption,
+        imported: data.imported,
+        used: data.used,
+        fuel_type_electric: 0,
+        fuel_type_hybrid: 0,
+        fuel_type_gas: 0,
+        driven_rwd: 0,
+        driven_fwd: 0,
+        driven_awd: 0,
+        
+    }
+    let drivenFeature = 'driven_' + data.driven
+    dummyData[drivenFeature] = 1;
+
+    let fuelTypeFeature = 'fuel_type_' + data.fuel_type
+    dummyData[fuelTypeFeature] = 1;
+    console.log('Dummy data: ', dummyData)
+
+    let features = Object.values(dummyData)
     let predictedPrice = await predict(features)
     console.log("predicted price in home controlller: ", predictedPrice)
-    return res.render("index.ejs", {data: data, price: predictedPrice})
+    return res.render("index.ejs", {brandsData: carBrands,data: data, price: predictedPrice})
 }
 module.exports = {
     getHomePage: getHomePage,

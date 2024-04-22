@@ -1,2 +1,4 @@
 /node_modules
 .env
+/ml_model_api/dulieuxeoriginal.xlsx
+/ml_model_api/meta_learning.ipynb
